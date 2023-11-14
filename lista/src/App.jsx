@@ -15,9 +15,22 @@ import './App.css'
 
 function App() {
 
+  const [usuario,setUsuario] = useState(null)
+
+  onAuthStateChanged(auth, (usuarioFirabase)=>{
+    if (usuarioFirabase){
+      setUsuario(usuarioFirabase)
+    }
+    else{
+      setUsuario(null)
+    }
+  })
+
   return (
     <>
-    <div></div>
+    <div>
+      {usuario ? <Home correoUsuario ={usuario.email}/> : <Login/>}
+    </div>
      
     </>
   )
